@@ -19,10 +19,11 @@ uploaded_file = st.file_uploader(
 )
 
 if uploaded_file:
-
     image = Image.open(uploaded_file)
+    image_bytes = uploaded_file.getvalue()
 
-    analysis = analyse_image()
+    with st.spinner("Analysing image with Azure AI Vision..."):
+        analysis = analyse_image(image_bytes)
 
     col1, col2 = st.columns(2)
 
@@ -31,24 +32,14 @@ if uploaded_file:
         st.image(image, use_container_width=True)
 
     with col2:
-        st.subheader("Image Analysis")
+        st.subheader("Azure AI Vision Analysis")
 
-        st.metric(
-            "Quality Score",
-            f"{analysis['quality_score']}%"
-        )
+        st.write("**Caption:**")
+        st.write(analysis["caption"])
 
-        st.metric(
-            "Background Quality",
-            analysis["background"]
-        )
-
-        st.metric(
-            "Lighting",
-            analysis["lighting"]
-        )
-
-        st.success("Image passed quality threshold")
+        st.write("**Tags:**")
+        for tag in analysis["tags"]:
+            st.write(f"- {tag}")
 
     st.divider()
 
@@ -71,13 +62,10 @@ if uploaded_file:
     )
 
     if st.button("Generate Listing"):
-
         if not product_name:
             st.warning("Please enter a product name.")
         else:
-
             listing = generate_listing(product_name)
 
             st.subheader("Generated Product Listing")
-
             st.text(listing)
