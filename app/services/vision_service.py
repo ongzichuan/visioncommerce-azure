@@ -7,8 +7,8 @@ from azure.core.credentials import AzureKeyCredential
 load_dotenv()
 
 def analyse_image(image_bytes):
-    endpoint = os.getenv("AZURE_VISION_ENDPOINT")
-    key = os.getenv("AZURE_VISION_KEY")
+    endpoint = os.getenv("VISION_ENDPOINT")
+    key = os.getenv("VISION_KEY")
 
     client = ImageAnalysisClient(
         endpoint=endpoint,
