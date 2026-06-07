@@ -1,6 +1,7 @@
 import streamlit as st
 from PIL import Image
 
+from services.storage_service import upload_image
 from services.vision_service import analyse_image
 from services.openai_service import generate_listing
 
@@ -22,6 +23,8 @@ if uploaded_file:
     image = Image.open(uploaded_file)
     image_bytes = uploaded_file.getvalue()
 
+    blob_url = upload_image(uploaded_file.name, image_bytes)
+
     with st.spinner("Analysing image with Azure AI Vision..."):
         analysis = analyse_image(image_bytes)
 
@@ -30,10 +33,11 @@ if uploaded_file:
     with col1:
         st.subheader("Original Product Image")
         st.image(image, use_container_width=True)
+        st.success("Image uploaded to Azure Blob Storage")
+        st.code(blob_url)
 
     with col2:
         st.subheader("Azure AI Vision Analysis")
-
         st.write("**Caption:**")
         st.write(analysis["caption"])
 
@@ -65,7 +69,15 @@ if uploaded_file:
         if not product_name:
             st.warning("Please enter a product name.")
         else:
-            listing = generate_listing(product_name)
+            listing = generate_listing(
+                product_name,
+                category,
+                analysis
+            )
 
             st.subheader("Generated Product Listing")
-            st.text(listing)
+            st.text_area(
+                "AI Generated Listing",
+                listing,
+                height=350
+            )
