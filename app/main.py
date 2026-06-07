@@ -34,7 +34,7 @@ if uploaded_file:
         st.subheader("Original Product Image")
         st.image(image, use_container_width=True)
         st.success("Image uploaded to Azure Blob Storage")
-        st.code(blob_url)
+        st.success("Image successfully stored in Azure Blob Storage")
 
     with col2:
         st.subheader("Azure AI Vision Analysis")
