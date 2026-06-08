@@ -65,7 +65,7 @@ if uploaded_file:
     image_bytes = uploaded_file.getvalue()
 
     with st.spinner("Removing background..."):
-        background_removed = remove_background(image_bytes)
+        background_removed = image
 
     background_removed_image = Image.open(
         BytesIO(background_removed)
