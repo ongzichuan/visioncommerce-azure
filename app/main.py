@@ -1,10 +1,12 @@
 import streamlit as st
 from PIL import Image
+from io import BytesIO
 
 from services.storage_service import upload_image
 from services.vision_service import analyse_image
 from services.openai_service import generate_listing
 from services.scoring_service import calculate_quality_score
+from services.background_service import remove_background
 
 st.set_page_config(
     page_title="VisionCommerce Azure",
@@ -13,7 +15,6 @@ st.set_page_config(
 )
 
 with st.sidebar:
-
     st.header("Platform Information")
 
     st.info("""
@@ -25,6 +26,7 @@ Technology Stack
 • Azure Container Registry
 • Streamlit
 • Docker
+• Background Removal
 """)
 
     st.success("System Status: Online")
@@ -42,6 +44,8 @@ Analyse product images, detect quality issues, generate metadata and prepare mar
 
 ✅ Azure Blob Storage
 
+✅ Background Removal
+
 ✅ Product Recognition
 
 ✅ Quality Assessment
@@ -57,9 +61,15 @@ uploaded_file = st.file_uploader(
 )
 
 if uploaded_file:
-
     image = Image.open(uploaded_file)
     image_bytes = uploaded_file.getvalue()
+
+    with st.spinner("Removing background..."):
+        background_removed = remove_background(image_bytes)
+
+    background_removed_image = Image.open(
+        BytesIO(background_removed)
+    )
 
     blob_url = upload_image(
         uploaded_file.name,
@@ -67,7 +77,6 @@ if uploaded_file:
     )
 
     with st.spinner("Analysing image with Azure AI Vision..."):
-
         analysis = analyse_image(
             image_bytes
         )
@@ -79,7 +88,6 @@ if uploaded_file:
     col1, col2 = st.columns(2)
 
     with col1:
-
         st.subheader("Original Product Image")
 
         st.image(
@@ -91,8 +99,21 @@ if uploaded_file:
             "Image successfully stored in Azure Blob Storage"
         )
 
-    with col2:
+        st.subheader("Background Removed")
 
+        st.image(
+            background_removed_image,
+            use_container_width=True
+        )
+
+        st.download_button(
+            label="Download Transparent PNG",
+            data=background_removed,
+            file_name="product_no_bg.png",
+            mime="image/png"
+        )
+
+    with col2:
         st.subheader(
             "Azure AI Vision Analysis"
         )
@@ -139,15 +160,11 @@ if uploaded_file:
     if st.button(
         "Generate Listing"
     ):
-
         if not product_name:
-
             st.warning(
                 "Please enter a product name."
             )
-
         else:
-
             listing = generate_listing(
                 product_name,
                 category,
