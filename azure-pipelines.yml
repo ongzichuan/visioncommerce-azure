@@ -1,0 +1,43 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  imageRepository: visioncommerce-azure
+  imageTag: latest
+  resourceGroup: rg-visioncommerce-demo
+  containerAppName: visioncommerce-app
+
+steps:
+
+- task: Docker@2
+  displayName: Build Image
+  inputs:
+    command: build
+    Dockerfile: '**/Dockerfile'
+    repository: $(imageRepository)
+    tags: |
+      $(imageTag)
+
+- task: Docker@2
+  displayName: Push Image
+  inputs:
+    command: push
+    containerRegistry: visioncommerce-azure-connection
+    repository: $(imageRepository)
+    tags: |
+      $(imageTag)
+
+- task: AzureCLI@2
+  displayName: Update Container App
+  inputs:
+    azureSubscription: visioncommerce-azure-connection
+    scriptType: bash
+    scriptLocation: inlineScript
+    inlineScript: |
+      az containerapp update \
+        --name $(containerAppName) \
+        --resource-group $(resourceGroup) \
+        --image acrvisioncommercezc.azurecr.io/visioncommerce-azure:latest
