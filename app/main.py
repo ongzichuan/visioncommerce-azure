@@ -68,9 +68,9 @@ if uploaded_file:
     try:
 
         with st.spinner("Removing background..."):
-            background_removed = remove_background(
-                image_bytes
-            )
+            st.write("Starting rembg")
+        background_removed = remove_background(image_bytes)
+        st.write("Background removed successfully")
 
         background_removed_image = Image.open(
             BytesIO(background_removed)
