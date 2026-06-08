@@ -6,29 +6,21 @@ pool:
 
 variables:
   imageRepository: visioncommerce-azure
-  imageTag: latest
+  imageTag: v1
   resourceGroup: rg-visioncommerce-demo
   containerAppName: visioncommerce-app
 
 steps:
 
 - task: Docker@2
-  displayName: Build Image
+  displayName: Build and Push Image
   inputs:
-    command: build
-    Dockerfile: '**/Dockerfile'
-    repository: $(imageRepository)
-    tags: |
-      $(imageTag)
-
-- task: Docker@2
-  displayName: Push Image
-  inputs:
-    command: push
+    command: buildAndPush
     containerRegistry: visioncommerce-acr
-    repository: $(imageRepository)
+    repository: visioncommerce-azure
+    dockerfile: '**/Dockerfile'
     tags: |
-      $(imageTag)
+      v1
 
 - task: AzureCLI@2
   displayName: Update Container App
@@ -38,6 +30,6 @@ steps:
     scriptLocation: inlineScript
     inlineScript: |
       az containerapp update \
-        --name $(containerAppName) \
-        --resource-group $(resourceGroup) \
-        --image acrvisioncommercezc.azurecr.io/visioncommerce-azure:latest
+        --name visioncommerce-app \
+        --resource-group rg-visioncommerce-demo \
+        --image acrvisioncommercezc.azurecr.io/visioncommerce-azure:v1
