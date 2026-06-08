@@ -20,7 +20,7 @@ steps:
     repository: visioncommerce-azure
     dockerfile: '**/Dockerfile'
     tags: |
-      v1
+      v2
 
 - task: AzureCLI@2
   displayName: Update Container App
