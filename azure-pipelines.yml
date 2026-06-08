@@ -6,7 +6,7 @@ pool:
 
 variables:
   imageRepository: visioncommerce-azure
-  imageTag: v1
+  imageTag: v2
   resourceGroup: rg-visioncommerce-demo
   containerAppName: visioncommerce-app
 
@@ -32,4 +32,4 @@ steps:
       az containerapp update \
         --name visioncommerce-app \
         --resource-group rg-visioncommerce-demo \
-        --image acrvisioncommercezc.azurecr.io/visioncommerce-azure:v1
+        --image acrvisioncommercezc.azurecr.io/visioncommerce-azure:v2

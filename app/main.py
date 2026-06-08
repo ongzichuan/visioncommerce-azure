@@ -1,3 +1,4 @@
+st.title("VisionCommerce V2")
 if uploaded_file:
 
     image = Image.open(uploaded_file)
