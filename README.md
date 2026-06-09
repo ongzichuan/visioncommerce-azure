@@ -303,35 +303,35 @@ Applied concepts:
 
 ### Home Page
 
-Insert Screenshot 01
+<img width="1600" height="760" alt="WhatsApp Image 2026-06-09 at 4 24 51 PM" src="https://github.com/user-attachments/assets/fb370934-97c8-4169-808f-6993de64300d" />
 
 ### Product Upload
 
-Insert Screenshot 02
+<img width="1600" height="964" alt="WhatsApp Image 2026-06-09 at 4 26 02 PM" src="https://github.com/user-attachments/assets/f28353f6-5275-40f5-92e3-8fefd495479c" />
 
 ### Background Removal
 
-Insert Screenshot 03
+<img width="1328" height="1600" alt="WhatsApp Image 2026-06-09 at 4 26 25 PM" src="https://github.com/user-attachments/assets/61928afd-52b9-4105-94ac-6b730dd83103" />
 
 ### Azure Vision Analysis
 
-Insert Screenshot 04
+<img width="847" height="1259" alt="WhatsApp Image 2026-06-09 at 4 28 05 PM" src="https://github.com/user-attachments/assets/7628abb3-bcd8-4a86-81ac-4dfe2138788c" />
 
 ### AI Listing Generation
 
-Insert Screenshot 05
+<img width="1600" height="848" alt="WhatsApp Image 2026-06-09 at 4 30 00 PM" src="https://github.com/user-attachments/assets/62323048-51ef-4869-a7ed-f15b2868cd1f" />
 
 ### Azure DevOps Pipeline Success
 
-Insert Screenshot 06
+<img width="1600" height="856" alt="WhatsApp Image 2026-06-09 at 4 29 08 PM" src="https://github.com/user-attachments/assets/196b8e62-5c26-46c1-9903-b958fb7eb124" />
 
 ### Azure Container Apps Deployment
 
-Insert Screenshot 07
+<img width="1600" height="377" alt="WhatsApp Image 2026-06-09 at 4 35 35 PM" src="https://github.com/user-attachments/assets/511b3ad1-4b8b-4f7d-b529-7f51c1359240" />
 
 ### Azure Blob Storage Upload
 
-Insert Screenshot 08
+<img width="1600" height="491" alt="WhatsApp Image 2026-06-09 at 4 36 21 PM" src="https://github.com/user-attachments/assets/e424c0b1-92e4-4a8f-8a90-e57cd30bcf79" />
 
 ---
 
