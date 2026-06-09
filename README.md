@@ -62,6 +62,9 @@ Automatically build and deploy new versions using Azure DevOps Pipelines.
 
 ## Architecture
 
+### 
+<img width="1536" height="1024" alt="visioncommerce_arch_diagram" src="https://github.com/user-attachments/assets/b9402092-9f43-4e86-a7c5-e843003b729d" />
+
 ### User Workflow
 
 ```text
