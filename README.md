@@ -6,11 +6,42 @@ AI-Powered E-Commerce Image Optimisation Platform built using Microsoft Azure, A
 
 ## Project Overview
 
-VisionCommerce Azure is a cloud-native AI-powered e-commerce platform that helps sellers optimise product images and generate marketplace-ready product listings.
+VisionCommerce Azure was created to solve a common problem faced by online sellers on platforms such as Shopee, Lazada, Carousell, Facebook Marketplace, and other e-commerce marketplaces.
 
-Users can upload a product image, automatically remove the image background, analyse the image using Azure AI Vision, and generate professional product listings using OpenAI.
+Many sellers want professional-looking product images and attractive product descriptions, but they often face two challenges:
 
-The project demonstrates practical implementation of cloud computing, artificial intelligence, containerisation, and DevOps automation on Microsoft Azure.
+1. They need clean product photos with backgrounds removed.
+2. They struggle to write effective product listings due to limited copywriting skills or lack of confidence in English.
+
+As a result, many users end up paying for third-party software or online services just to remove image backgrounds or generate product descriptions.
+
+VisionCommerce Azure provides an AI-powered solution that automates these tasks. Users can upload a product image, automatically remove the background, analyse the image using Azure AI Vision, and generate marketplace-ready product listings using AI.
+
+This project serves as a practical implementation of the knowledge gained throughout Microsoft's AI certification pathway, including:
+
+* AI-901: Microsoft Azure AI Fundamentals
+* AI-103: Azure AI Apps and Agents Developer Associate
+* AI-200: Azure AI Cloud Developer Associate Learning Path
+* AI-300: Machine Learning Operations Engineer Associate Learning Path
+
+The goal of this project was to utilise Microsoft-native cloud and AI services wherever possible to demonstrate real-world application of Azure technologies.
+
+Due to Azure OpenAI quota limitations on a student subscription, OpenAI API was used for generative content creation. Apart from this limitation, the majority of the solution is built using native Microsoft Azure services.
+
+---
+
+## Problem Statement
+
+Online sellers frequently encounter the following challenges:
+
+* Poor-quality product images with distracting backgrounds
+* Lack of copywriting skills for product listings
+* Limited English proficiency
+* Expensive subscription-based tools for image editing
+* Additional costs for AI-generated product descriptions
+* Time-consuming listing creation process
+
+VisionCommerce Azure addresses these challenges by providing an all-in-one AI-powered workflow that helps users create professional product listings quickly and efficiently.
 
 ---
 
@@ -32,7 +63,7 @@ Upload product images in JPG, JPEG, or PNG format.
 
 ### Background Removal
 
-Automatically remove image backgrounds using rembg.
+Automatically remove image backgrounds using rembg to create clean and professional product photos.
 
 ### Azure AI Vision Analysis
 
@@ -62,8 +93,7 @@ Automatically build and deploy new versions using Azure DevOps Pipelines.
 
 ## Architecture
 
-### 
-<img width="1536" height="1024" alt="visioncommerce_arch_diagram" src="https://github.com/user-attachments/assets/b9402092-9f43-4e86-a7c5-e843003b729d" />
+### <img width="1536" height="1024" alt="visioncommerce_arch_diagram" src="https://github.com/user-attachments/assets/4f58a4f3-070e-4d9e-ae0d-4456db0a1e87" />
 
 ### User Workflow
 
@@ -133,23 +163,49 @@ Azure Container Apps
 
 ### Azure Container Apps
 
-Hosts the Streamlit web application.
+Hosts the Streamlit web application and provides scalable cloud deployment.
 
 ### Azure Container Registry
 
-Stores Docker container images.
+Stores Docker container images used for deployment.
 
 ### Azure Blob Storage
 
-Stores uploaded product images.
+Stores uploaded product images securely in the cloud.
 
 ### Azure AI Vision
 
-Provides image captioning and image tag extraction.
+Provides image captioning and image tag extraction capabilities.
 
 ### Azure DevOps
 
-Provides automated CI/CD deployment.
+Provides automated CI/CD deployment pipelines.
+
+---
+
+## AI Capabilities
+
+### Computer Vision
+
+Azure AI Vision analyses uploaded images and generates:
+
+* Image captions
+* Product-related tags
+* Visual insights
+
+### Generative AI
+
+OpenAI generates:
+
+* Product titles
+* Product descriptions
+* Key selling points
+* Marketplace-ready listing content
+* SEO-friendly keywords
+
+### Image Enhancement
+
+Background removal improves product presentation and creates cleaner images suitable for online marketplaces.
 
 ---
 
@@ -189,6 +245,57 @@ OpenAI generates:
 ### Step 6
 
 Results are displayed to the user.
+
+---
+
+## Certification Knowledge Applied
+
+This project was designed to apply concepts learned from Microsoft's AI certification pathway.
+
+### AI-901
+
+Applied concepts:
+
+* Artificial Intelligence fundamentals
+* Computer Vision
+* Generative AI
+* Responsible AI principles
+
+### AI-103
+
+Applied concepts:
+
+* Azure AI Vision integration
+* AI service implementation
+* API integration
+* AI solution development
+
+### AI-200
+
+Applied concepts:
+
+* AI application workflows
+* AI service orchestration
+* Cloud-based AI deployment
+
+### AI-300
+
+Applied concepts:
+
+* AI solution architecture
+* Cloud-native AI design
+* Scalable AI application deployment
+
+### Azure and DevOps Skills
+
+Applied concepts:
+
+* Azure Container Apps
+* Azure Container Registry
+* Azure Blob Storage
+* Docker containerisation
+* Azure DevOps CI/CD
+* Cloud-native application deployment
 
 ---
 
@@ -254,21 +361,27 @@ Azure Container Apps Deployment
 
 ## Challenges Encountered
 
+### Azure OpenAI Quota Limitations
+
+As the project was developed using an Azure student subscription, Azure OpenAI quota limitations prevented full implementation using Azure OpenAI services.
+
+To overcome this limitation, OpenAI API was integrated while maintaining the rest of the architecture on Microsoft Azure services.
+
 ### Azure Container Apps Revision Management
 
 Understanding revision deployment and traffic routing.
 
 ### Container Image Updates
 
-Ensuring latest Docker images are successfully deployed.
+Ensuring latest Docker images were successfully deployed.
 
 ### Memory Allocation
 
 Background removal required increasing container memory allocation from 1 Gi to 2 Gi.
 
-### OpenAI Integration
+### Prompt Engineering
 
-Configuring API keys and prompt engineering for listing generation.
+Designing prompts that generate effective marketplace listings suitable for e-commerce platforms.
 
 ### Azure DevOps Automation
 
@@ -289,6 +402,11 @@ Through this project, I gained practical experience in:
 * Azure DevOps CI/CD
 * Cloud Native Application Deployment
 * AI-Powered Application Development
+* Prompt Engineering
+* Computer Vision Solutions
+* Generative AI Applications
+
+Most importantly, this project allowed me to transform theoretical knowledge gained from Microsoft AI certifications into a practical real-world solution that solves a genuine business problem for online sellers.
 
 ---
 
@@ -296,6 +414,7 @@ Through this project, I gained practical experience in:
 
 Potential enhancements include:
 
+* Azure OpenAI Integration
 * AI Category Detection
 * Automatic Product Name Generation
 * Listing History Tracking
@@ -303,6 +422,8 @@ Potential enhancements include:
 * User Authentication
 * Multi-language Listing Generation
 * SEO Optimisation Suggestions
+* Marketplace-Specific Templates
+* Product Recommendation Features
 
 ---
 
